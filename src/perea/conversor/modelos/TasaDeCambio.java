@@ -1,8 +1,8 @@
-//package perea.conversor.modelos;
+package perea.conversor.modelos;
 
-//public class TasaDeCambio {
+import java.util.Map;
 
-    /*
+/*
     import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -41,6 +41,24 @@ public class ExchangeRateAPI {
 }
 
     * */
+public class TasaDeCambio {
+
+    String resultado;
+    private Moneda monedaBase;
+
+    Map<String, Double> tasaCambio;
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public Moneda getMonedaBase() {
+        return monedaBase;
+    }
+
+    public Map<String, Double> getTasaCambio() {
+        return tasaCambio;
+    }
+}
 
 
-//}
