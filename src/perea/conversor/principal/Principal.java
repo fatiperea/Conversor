@@ -14,10 +14,11 @@ import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) throws IOException, InterruptedException {
-        //Scanner lectura= new Scanner(System.in);
-        //var busqueda=lectura.nextLine();
+        Scanner lectura= new Scanner(System.in);
+        System.out.println("moneda: ");
+        var busqueda=lectura.nextLine();
 
-        String direccion="https://v6.exchangerate-api.com/v6/98940a4ca8e53fb94f327ebb/latest/USD";//+busqueda;
+        String direccion="https://v6.exchangerate-api.com/v6/98940a4ca8e53fb94f327ebb/latest/"+busqueda;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -26,11 +27,15 @@ public class Principal {
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(response.body());
+        //System.out.println(response.body());
 
         String json=response.body();
 
+        Gson gson= new Gson();
 
+        TasaDeCambioER tasa= gson.fromJson(json, TasaDeCambioER.class);
+
+        System.out.println(tasa);
 
         /*Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.
                 UPPER_CAMEL_CASE).setPrettyPrinting().create();
