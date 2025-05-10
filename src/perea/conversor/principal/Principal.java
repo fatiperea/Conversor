@@ -27,8 +27,6 @@ public class Principal {
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-        //System.out.println(response.body());
-
         String json=response.body();
 
         Gson gson= new Gson();
@@ -37,13 +35,6 @@ public class Principal {
 
         System.out.println(tasa);
 
-        /*Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.
-                UPPER_CAMEL_CASE).setPrettyPrinting().create();
-
-        System.out.println("Tipo de moneda: ");*/
-
-        //String json;
-        //TasaDeCambioER tasa= gson.fromJson(json, TasaDeCambioER.class);
 
 
     }
