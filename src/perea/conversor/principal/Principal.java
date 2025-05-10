@@ -1,8 +1,6 @@
 package perea.conversor.principal;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import perea.conversor.modelos.TasaDeCambioER;
 
 import java.io.IOException;
@@ -31,9 +29,18 @@ public class Principal {
 
         Gson gson= new Gson();
 
-        TasaDeCambioER tasa= gson.fromJson(json, TasaDeCambioER.class);
+        //TasaDeCambioER tasa= gson.fromJson(json, TasaDeCambioER.class);
 
-        System.out.println(tasa);
+        //System.out.println(tasa);
+
+        JsonElement elemento = JsonParser.parseString(response.body());
+        JsonObject objectRoot = elemento.getAsJsonObject();
+        //Accediendo a JsonObject
+        double tasa = objectRoot.get("conversion_rate").getAsDouble();
+
+        System.out.println(objectRoot);
+        //System.out.println("tasa: "+tasa);
+
 
 
 
