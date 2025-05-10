@@ -4,8 +4,6 @@ import com.google.gson.*;
 import perea.conversor.modelos.TasaDeCambioER;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.net.http.HttpClient;
@@ -36,38 +34,12 @@ public class Principal {
 
         //TasaDeCambioER tasa= gson.fromJson(json, TasaDeCambioER.class);
 
-        //System.out.println(tasa);
         /*try {*/
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
 
-            JsonObject jsonObject = JsonParser.parseReader(new InputStreamReader(conn.getInputStream())).getAsJsonObject();
-            double tasa=jsonObject.getAsJsonObject("conversion_rates").get(busqueda).getAsDouble();
-
-            //System.out.println("jo "+jsonObject);
+        JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
+        double tasa= jsonObject.getAsJsonObject("conversion_rates").get(busqueda).getAsDouble();
 
             System.out.println("tasa: "+tasa);
-
-        /*    if (conn.getResponseCode() != 200) {
-                System.out.println("Error al obtener datos de la API.");
-
-            }
-        }catch (Exception e){
-            {
-                e.printStackTrace();
-        }*/
-
-
-
-        /*JsonElement elemento = JsonParser.parseString(response.body());
-        JsonObject objectRoot = elemento.getAsJsonObject();
-        //Accediendo a JsonObject
-        double tasa = objectRoot.get("conversion_rate").getAsDouble();*/
-
-        //System.out.println(objectRoot);
-        //System.out.println("tasa: "+tasa);
-
-        /**/
 
 
 
